@@ -34,6 +34,15 @@ view: incidents {
     sql: ${incident_within_new_geometry} = 'true' ;;
   }
 
+  dimension: incident_within_new_geometry {
+    # test case -117.118360796109 , 32.6963729931624 to -117.045158909609 , 32.6623841670131
+    # Must create a new user_attribute called new_geometry in /admin/user_attributes
+    # -117.118360796109 32.6963729931624, -117.045158909609 32.6963729931624, -117.045158909609 32.6623841670131, -117.118360796109 32.6623841670131, -117.118360796109 32.6963729931624
+    hidden: yes
+    type: string
+    sql: ${hidden_geometry}.STWithin(geometry::Parse('POLYGON(( {{ _user_attributes['new_geometry'] }} ))')) ;;
+  }
+
   set: detail {
     fields: [incident_id, crime_type, location]
   }
@@ -73,15 +82,6 @@ view: incidents {
     hidden: yes
     type: string
     sql: ${hidden_geometry}.ToString() ;;
-  }
-
-  dimension: incident_within_new_geometry {
-    # test case -117.118360796109 , 32.6963729931624 to -117.045158909609 , 32.6623841670131
-    # Must create a new user_attribute called new_geometry in /admin/user_attributes
-    # -117.118360796109 32.6963729931624, -117.045158909609 32.6963729931624, -117.045158909609 32.6623841670131, -117.118360796109 32.6623841670131, -117.118360796109 32.6963729931624
-    hidden: yes
-    type: string
-    sql: ${hidden_geometry}.STWithin(geometry::Parse('POLYGON(( {{ _user_attributes['new_geometry'] }} ))')) ;;
   }
 
   dimension: new_geometry_string {
