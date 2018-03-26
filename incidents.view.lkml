@@ -18,7 +18,7 @@ view: incidents {
     type: count
 #     html: <a target="_parent" href="/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{rendered_value}}</a> ;;
 #     html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{value}}</a>;;
-    html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}',yes:!t)&ifr3=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}',yes:!t)">{{rendered_value}}</a>;;
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}')&ifr3=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}')">{{rendered_value}}</a>;;
   }
 
 
