@@ -13,8 +13,14 @@ view: incidents {
     type: count
   }
 
+  measure: incident_count_crime_type {
+    label: "Incident Count"
+    type: count
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=(CrimeType:'{{ crime_type._value | encode_uri}}')">{{rendered_value}}</a>;;
+  }
+
   measure: incident_count_with_area_filter {
-    label: "Incident Count for Area Dashboard Filter"
+    label: "Incident Count"
     type: count
 #     html: <a target="_parent" href="/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{rendered_value}}</a> ;;
 #     html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{value}}</a>;;
@@ -32,6 +38,7 @@ view: incidents {
   dimension: crime_type {
     type: string
     sql: ${TABLE}.crime_type ;;
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=(CrimeType:'{{ value | encode_uri}}')">{{rendered_value}}</a> ;;
   }
 
   dimension: location {
