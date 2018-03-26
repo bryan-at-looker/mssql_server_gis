@@ -15,7 +15,9 @@ view: incidents {
 
   measure: incident_count_crime_type {
     label: "Incident Count"
+    description: "crime type"
     type: count
+    link: {label: "See On Map" url: "{{crime_type._linked_value}}" }
     html: <a target="_parent" href="http://localhost:8000/iframebroadcast.html#ifr2=(CrimeType:'{{ crime_type._value | encode_uri}}')">{{rendered_value}}</a>;;
   }
 
