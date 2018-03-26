@@ -16,8 +16,11 @@ view: incidents {
   measure: incident_count_with_area_filter {
     label: "Incident Count for Area Filter"
     type: count
-    html: <a href="/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{rendered_value}}</a> ;;
+#     html: <a target="_parent" href="/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{rendered_value}}</a> ;;
+    html: <a target="_parent" href="/iframebroadcast#iframe-2-id=https://master.dev.looker.com/embed/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{value}}</a>;;
   }
+
+
 
   measure: incident_count_new_geometry {
     label: "Incident Count (New Geometry Filtered)"
