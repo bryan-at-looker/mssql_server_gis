@@ -17,7 +17,7 @@ view: incidents {
     label: "Incident Count for Area Dashboard Filter"
     type: count
 #     html: <a target="_parent" href="/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{rendered_value}}</a> ;;
-    html: <a target="_parent" href="file:///Users/Looker/ernesto_fabio/docker-nginx-self-signed-ssl/demo-site/iframebroadcast.html#iframe-2-id=https://master.dev.looker.com/embed/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{value}}</a>;;
+    html: <a target="_parent" href="/iframebroadcast.html#iframe-2-id=https://master.dev.looker.com/embed/dashboards/1262?Area%20Name='{{ geo_areas.area_name._value }}'">{{value}}</a>;;
   }
 
 
