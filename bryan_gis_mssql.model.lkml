@@ -1,4 +1,4 @@
-connection: "mssql_2008"
+connection: "azuredb"
 
 # include all the views
 include: "*.view"
