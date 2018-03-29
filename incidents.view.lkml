@@ -23,7 +23,7 @@ view: incidents {
   measure: incident_count_with_area_filter {
     label: "Incident Count"
     type: count
-    html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr3=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}')">{{rendered_value}}</a>;;
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr2=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}')">{{rendered_value}}</a>;;
   }
 
 
