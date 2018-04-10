@@ -24,6 +24,12 @@ view: incidents {
     description: "crime type"
     type: count
     html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr2=(CrimeType:'{{ crime_type._value | encode_uri}}')">{{rendered_value}}</a>;;
+    drill_fields: [crime_type, crime_type_id, incident_count]
+    link: {
+      label: "update dashboard"
+#       target: "_parent"
+      url: "http://localhost:8000/iframebroadcast2.html#ifr2="
+    }
   }
 
   measure: incident_count_with_area_filter {
