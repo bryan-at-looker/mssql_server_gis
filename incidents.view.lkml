@@ -11,6 +11,31 @@ view: incidents {
   measure: incident_count {
     label: "Incident Count"
     type: count
+    drill_fields: [crime_type, crime_type_id, incident_count]
+    link: {
+      label: "update dashboard"
+#       target: "_parent"
+      url: "http://localhost:8000/iframebroadcast2.html#ifr2="
+    }
+  }
+
+  measure: incident_count_crime_type {
+    label: "Incident Count"
+    description: "crime type"
+    type: count
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr2=(CrimeType:'{{ crime_type._value | encode_uri}}')">{{rendered_value}}</a>;;
+    drill_fields: [crime_type, crime_type_id, incident_count]
+    link: {
+      label: "update dashboard"
+#       target: "_parent"
+      url: "http://localhost:8000/iframebroadcast2.html#ifr2="
+    }
+  }
+
+  measure: incident_count_with_area_filter {
+    label: "Incident Count"
+    type: count
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr2=(AreaName:'{{ geo_areas.area_name._value | encode_uri}}')">{{rendered_value}}</a>;;
   }
 
   measure: incident_count_new_geometry {
@@ -22,6 +47,7 @@ view: incidents {
   dimension: crime_type {
     type: string
     sql: ${TABLE}.crime_type ;;
+    html: <a target="_parent" href="http://localhost:8000/iframebroadcast2.html#ifr2=(CrimeType:'{{ value | encode_uri}}')">{{rendered_value}}</a> ;;
   }
 
   dimension: location {
@@ -39,7 +65,7 @@ view: incidents {
     # test case -117.118360796109 , 32.6963729931624 to -117.045158909609 , 32.6623841670131
     # Must create a new user_attribute called new_geometry in /admin/user_attributes
     # -117.118360796109 32.6963729931624, -117.045158909609 32.6963729931624, -117.045158909609 32.6623841670131, -117.118360796109 32.6623841670131, -117.118360796109 32.6963729931624
-    hidden: yes
+    # hidden: yes
     type: string
     sql: ${hidden_geometry}.STWithin(geometry::Parse('POLYGON(( {{ _user_attributes['new_geometry'] }} ))')) ;;
   }
